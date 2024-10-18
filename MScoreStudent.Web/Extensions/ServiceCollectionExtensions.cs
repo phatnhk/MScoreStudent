@@ -22,6 +22,7 @@ namespace MScoreStudent.Web.Extensions
             else
             {
                 services.AddDbContext<IdentityContext>(options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
+                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ApplicationConnection"), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
             //services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             //{
